@@ -4,7 +4,9 @@ import os
 from supabase import create_client
 
 load_dotenv()
-supabase = create_client(os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_KEY"))
+url = os.environ.get("SUPABASE_URL") or st.secrets.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY") or st.secrets.get("SUPABASE_KEY")
+supabase = create_client(url, key)
 
 st.title("Mi Negocio")
 
